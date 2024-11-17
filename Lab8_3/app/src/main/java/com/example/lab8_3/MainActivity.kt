@@ -2,43 +2,48 @@ package com.example.lab8_3
 
 import android.content.Context
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.lab8_3.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var tvAppOpenCount: TextView
+    private lateinit var btnReset: Button
 
-    // Key for SharedPreferences
-    private val PREFS_NAME = "launch_preferences"
-    private val LAUNCH_COUNT_KEY = "launch_count"
+    // SharedPreferences keys
+    private val PREFS_NAME = "app_preferences"
+    private val OPEN_COUNT_KEY = "open_count"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
-        // Load and update the launch count
-        val launchCount = updateLaunchCount()
+        // Khởi tạo các view
+        tvAppOpenCount = findViewById(R.id.tvAppOpenCount)
+        btnReset = findViewById(R.id.btnReset)
 
-        // Display the launch count on the screen
-        binding.tvLaunchCount.text = "Số lần mở ứng dụng: $launchCount"
-    }
-
-    private fun updateLaunchCount(): Int {
+        // Lấy số lần mở ứng dụng từ SharedPreferences
         val sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val currentCount = sharedPref.getInt(LAUNCH_COUNT_KEY, 0)
-        val newCount = currentCount + 1
+        val openCount = sharedPref.getInt(OPEN_COUNT_KEY, 0)
 
-        // Save the updated launch count
+        // Hiển thị số lần mở
+        tvAppOpenCount.text = openCount.toString()
+
+        // Tăng số lần mở ứng dụng
+        val newOpenCount = openCount + 1
         with(sharedPref.edit()) {
-            putInt(LAUNCH_COUNT_KEY, newCount)
+            putInt(OPEN_COUNT_KEY, newOpenCount)
             apply()
         }
 
-        return newCount
+        // Xử lý sự kiện reset số lần mở
+        btnReset.setOnClickListener {
+            with(sharedPref.edit()) {
+                putInt(OPEN_COUNT_KEY, 0)
+                apply()
+            }
+            tvAppOpenCount.text = "0"
+        }
     }
 }

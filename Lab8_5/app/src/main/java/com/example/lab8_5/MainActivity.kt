@@ -43,10 +43,17 @@ class MainActivity : AppCompatActivity() {
 
         btnAddTask.setOnClickListener {
             val taskName = etTask.text.toString().trim()
-            if (taskName.isNotEmpty()) {
+            if (taskName.isEmpty()) {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Lỗi")
+                builder.setMessage("Vui lòng nhập tác vụ trước khi thêm!")
+                builder.setPositiveButton("OK", null)
+                builder.show()
+            } else {
                 addTask(taskName)
             }
         }
+
     }
 
     private fun addTask(taskName: String) {

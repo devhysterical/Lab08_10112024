@@ -5,16 +5,29 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp"
-    android:background="#F5F5F5">
+    android:background="@drawable/congrats">
 
+    <!-- TextView chào mừng -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chào mừng bạn đã đăng nhập!"
-        android:textSize="24sp"
+        android:text="Chúc mừng đăng nhập thành công!!!"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:textColor="#6200EE"
         android:fontFamily="sans-serif-medium" />
 
+    <!-- ImageView hiển thị ảnh -->
+    <ImageView
+        android:id="@+id/imgWelcome"
+        android:layout_width="362dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Hình ảnh chào mừng"
+        android:scaleType="centerCrop"
+        android:src="@drawable/congrat_image" />
+
+    <!-- Button đăng xuất -->
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"

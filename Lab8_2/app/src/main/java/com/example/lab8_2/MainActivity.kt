@@ -4,10 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import androidx.activity.enableEdgeToEdge
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.lab8_2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -83,10 +81,19 @@ class MainActivity : AppCompatActivity() {
     private fun applyDarkMode(isDarkMode: Boolean) {
         val backgroundColor = if (isDarkMode) android.R.color.black else android.R.color.white
         val textColor = if (isDarkMode) android.R.color.white else android.R.color.black
+
+        // Đặt màu nền
         binding.root.setBackgroundResource(backgroundColor)
+
+        // Đặt màu chữ cho các thành phần liên quan
         binding.switchDarkMode.setTextColor(resources.getColor(textColor, theme))
         binding.radioGroupFontSize.forEach { (it as RadioButton).setTextColor(resources.getColor(textColor, theme)) }
+
+        // Đặt màu chữ cho các TextView (Chế độ hiển thị và Kích thước chữ)
+        binding.root.findViewById<TextView>(R.id.textDisplayMode).setTextColor(resources.getColor(textColor, theme))
+        binding.root.findViewById<TextView>(R.id.textFontSize).setTextColor(resources.getColor(textColor, theme))
     }
+
 
     private fun applyFontSize(fontSize: String) {
         val textSize = when (fontSize) {

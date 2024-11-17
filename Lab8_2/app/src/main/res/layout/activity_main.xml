@@ -4,57 +4,105 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#F5F5F5">
+    android:background="@color/white">
 
+    <!-- Tiêu đề chính -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cài đặt ứng dụng"
         android:textSize="24sp"
-        android:textColor="#6200EE"
+        android:textColor="@color/purple_500"
+        android:fontFamily="sans-serif-medium"
         android:layout_gravity="center_horizontal"
-        android:paddingBottom="16dp"/>
+        android:paddingBottom="16dp" />
 
-    <!-- Switch for Dark Mode -->
+    <!-- Phân cách -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_300"
+        android:layout_marginVertical="8dp" />
+
+    <!-- Bật chế độ tối -->
+    <TextView
+        android:id="@+id/textDisplayMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chế độ hiển thị"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
+        android:paddingBottom="8dp" />
+
+
     <Switch
         android:id="@+id/switchDarkMode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Bật chế độ tối"
-        android:textSize="18sp"
-        android:paddingVertical="8dp" />
+        android:textSize="16sp"
+        android:paddingVertical="12dp"
+        android:layout_marginVertical="8dp"
+        android:minHeight="48dp"
+        android:minWidth="48dp" />
 
-    <!-- Switch for Font Size -->
+
+    <!-- Phân cách -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_300"
+        android:layout_marginVertical="8dp" />
+
+    <!-- Chọn kích thước chữ -->
     <TextView
+        android:id="@+id/textFontSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kích thước chữ"
         android:textSize="18sp"
-        android:paddingTop="16dp" />
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif"
+        android:paddingBottom="8dp" />
 
     <RadioGroup
         android:id="@+id/radioGroupFontSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:paddingHorizontal="8dp">
 
         <RadioButton
             android:id="@+id/radioSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nhỏ" />
+            android:text="Nhỏ"
+            android:textSize="16sp"
+            android:paddingVertical="4dp" />
 
         <RadioButton
             android:id="@+id/radioMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vừa" />
+            android:text="Vừa"
+            android:textSize="16sp"
+            android:paddingVertical="4dp" />
 
         <RadioButton
             android:id="@+id/radioLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lớn" />
+            android:text="Lớn"
+            android:textSize="16sp"
+            android:paddingVertical="4dp" />
     </RadioGroup>
+
+    <!-- Phân cách cuối -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_300"
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>
